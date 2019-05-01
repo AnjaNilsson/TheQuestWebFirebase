@@ -1,6 +1,11 @@
 // Initialize Firebase
 var config = {
-
+    apiKey: "AIzaSyDKtbbK0x-MUqXupFZkDBbFxzPlU9ArBNQ",
+    authDomain: "the-quest-3.firebaseapp.com",
+    databaseURL: "https://the-quest-3.firebaseio.com",
+    projectId: "the-quest-3",
+    storageBucket: "the-quest-3.appspot.com",
+    messagingSenderId: "216176601003"
 };
 firebase.initializeApp(config);
 
