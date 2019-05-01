@@ -1,14 +1,20 @@
 // Initialize Firebase
 var config = {
- 
+    apiKey: "AIzaSyDKtbbK0x-MUqXupFZkDBbFxzPlU9ArBNQ",
+    authDomain: "the-quest-3.firebaseapp.com",
+    databaseURL: "https://the-quest-3.firebaseio.com",
+    projectId: "the-quest-3",
+    storageBucket: "the-quest-3.appspot.com",
+    messagingSenderId: "216176601003"
 };
 firebase.initializeApp(config);
 
 
 
 
+
 //TRYING TO ADD TO THE DATABSE -- NOT WORKING!!
-var firestore = firebase.firestore();
+/* var firestore = firebase.firestore();
 
 const docRef = firestore.doc("samples/sandwichData");
 const outputHeader = document.querySelector("#hotDogOutput");
@@ -27,7 +33,7 @@ saveButton.addEventListener("click", function () {
         console.log("Got an error: ", error);
     });
 })
-
+ */
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
