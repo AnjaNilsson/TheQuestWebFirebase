@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>The Quest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet" />
+    <link rel="stylesheet" href="/CSS/main.css" />
+
+
+
+
+    <!-- Bootstrap ================================================== -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+    <!-- Header
+   ================================================== -->
+    <header id="home">
+        <div class="row banner">
+            <div id="user_div" class="loggedin-div">
+
+                <!-- NAVBAR -->
+                <nav id="nav-wrap">
+                    <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+                    <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+
+                    <ul id="nav" class="nav">
+                        <li class="current">
+                            <a class="smoothscroll" href="#home">Home</a>
+                        </li>
+                        <li>
+                            <a class="smoothscroll" href="#games">games</a>
+                        </li>
+                        <li>
+                            <a class="smoothscroll" href="#logout" onclick="logout()">Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- NAVBAR -->
+
+                
+                
+                
+                
+                
+                
+                
+                <!-- TITLE-->
+                <div class="banner-text">
+                    <h1 class="responsive-headline">The Quest</h1>
+
+                </div>
+                <!-- TITLE END-->
+
+                <!-- GENERATE RANDOM NUMBER-->
+                <div>
+                    <form name="randform">
+                        <button type="button" onClick="randomString()" class="btn btn-dark">
+                            Create Game
+                        </button>
+                        <input type="text" name="randomfield" id="randomnumber_field" />
+                    </form>
+                    
+                    <hr />
+                </div>
+                <!-- GENERATE RANDOM NUMBER-->
+
+
+                <!-- TEST WRITING TO DATABASE -->
+                <!--        
+                    <div class="main-form">
+                    <input type="text" placeholder="Enter text" />
+                    <button>Proceed</button>
+                    </div>
+                -->
+                <!-- TEST WRITING TO DATABASE -->
+
+                <p id="user_para">Welcome. You're currently logged in.</p>
+            </div>
+
+
+            <div id="login_div" class="banner-text">
+                <h1 class="responsive-headline">The Quest</h1>
+
+                <div class="login-wrap">
+                    <div class="login-html">
+                        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+
+                        <div class="login-form">
+                            <div class="sign-in-htm">
+                                <div class="group">
+                                    <label for="user" class="label">Username</label>
+                                    <input id="email_field" type="email" class="input">
+                                </div>
+                                <div class="group">
+                                    <label for="pass" class="label">Password</label>
+                                    <input id="password_field" type="password" class="input" data-type="password">
+                                </div>
+                                <div class="group">
+                                    <input type="submit" class="button" value="Sign In" onclick="login()">
+                                </div>
+                                <div class="hr"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+
+        </div>
+    </header>
+    <!-- Header End -->
+
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-functions.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-auth.js"></script>
+
+    <script src="/js/index.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Scripts -->
+
+
+
+</body></html>
