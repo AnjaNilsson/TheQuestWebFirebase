@@ -39,8 +39,10 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
 
-        document.getElementById("user_div").style.display = "block";
-        document.getElementById("login_div").style.display = "none";
+        $(".user_div").show();
+        $(".login_div").hide();
+/*         document.getElementsByClassName("user_div").style.display = "block";
+        document.getElementsByClassName("login_div").style.display = "none"; */
 
         var user = firebase.auth().currentUser;
 
@@ -53,8 +55,10 @@ firebase.auth().onAuthStateChanged(function (user) {
     } else {
         // No user is signed in.
 
-        document.getElementById("user_div").style.display = "none";
-        document.getElementById("login_div").style.display = "block";
+        $(".user_div").hide();
+        $(".login_div").show();
+/*         document.getElementsByClassName("user_div").style.display = "none";
+        document.getElementsByClassName("login_div").style.display = "block"; */
 
     }
 });
