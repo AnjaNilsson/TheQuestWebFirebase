@@ -9,9 +9,36 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var     html = '<div class="py-5 user_div">'
+        html += '<div class="container">'
+        html += '<div class="row hidden-md-up">'
+        html += '<div class="col-md-4">'
+        html += '<div class="card">'
+        html += '<div class="card-block">'
+        html += '<h4 class="card-title"> </h4>'
+        html += '<p class="card-text p-y-1"> </p>'
+
+        html += '<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">'
+        html += '<label class="form-check-label" for="defaultCheck1"> </label>'
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
+        html += '</div>'
 
 
+var firestore = firebase.firestore();
 
+firestore.collection("minigames").get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        $('#minigame-card').append(html);
+        $(".card-title").append(doc.data().name);
+
+    });
+});
 
 //TRYING TO ADD TO THE DATABSE -- NOT WORKING!!
 /* var firestore = firebase.firestore();
