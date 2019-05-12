@@ -14,38 +14,22 @@ var firestore = firebase.firestore();
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
-
         $(".user_div").show();
         $(".login_div").hide();
-/*         document.getElementsByClassName("user_div").style.display = "block";
-        document.getElementsByClassName("login_div").style.display = "none"; */
-
-        var user = firebase.auth().currentUser;
-
-        if (user != null) {
-
-            var email_id = user.email;
-            // document.getElementById("user_para").innerHTML = "TEST: Welcome User : " + email_id;
-        }
-
     } else {
         // No user is signed in.
-
         $(".user_div").hide();
         $(".login_div").show();
-/*         document.getElementsByClassName("user_div").style.display = "none";
-        document.getElementsByClassName("login_div").style.display = "block"; */
-
     }
 });
 
 firestore.collection("minigames").get().then(function(querySnapshot) {
-    var minigameCards = "";
+    var miniGameCards = "";
 
     querySnapshot.forEach(function(doc) {
         // doc.data() is never undefined for query doc snapshots
         console.log(doc.id, " => ", doc.data());
-        minigameCards += '<div id="'+doc.id+'" class="card custom-card mx-2 mb-3">'
+        miniGameCards += '<div id="'+doc.id+'" class="card custom-card mx-2 mb-3">'
         + '<div class="card-body">'
         + '<h4 class="card-title">'+doc.data().name+'</h4>'
         + '<p class="card-text p-y-1">'+doc.data().description+'</p>'
@@ -59,30 +43,51 @@ firestore.collection("minigames").get().then(function(querySnapshot) {
         + '</div>'
 
     });
-    $('#minigame-card').html(minigameCards);
+    $('#minigame-card').html(miniGameCards);
 });
-
 
 function createNewGame() {
     var gameId = getGameId();
-    var selectedGames = [];
+    var selectedMiniGames = getSelectedMiniGames();
     var user = firebase.auth().currentUser.uid;
     
-    var selectedGames = getSelected();
-
     firestore.collection("games").doc(gameId).set({
-        config: selectedGames,
+        miniGames: selectedMiniGames,
         user: user
     })
     .then(function() {
-        console.log("Document written with ID: ", gameId, selectedGames);
+        console.log("Document written with ID: ", gameId, selectedMiniGames);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
-
 };
 
+function getSelectedMiniGames() {
+    var selected = [];
+    $('.switch input:checked').each(function() {
+        var selectedId = $(this).attr('id').substr(6);
+        
+        selected.push({
+            [selectedId]: {
+                "lat": $('#lat_' + selectedId).val(),
+                "lon": $('#lon_' + selectedId).val()
+            }
+        });
+    });
+    return selected;
+}
+
+function getGameId() {
+    var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZ";
+    var string_length = 4;
+    var randomstring = '';
+    for (var i = 0; i < string_length; i++) {
+        var rnum = Math.floor(Math.random() * chars.length);
+        randomstring += chars.substring(rnum, rnum + 1);
+    };
+    return randomstring;
+};
 
 function login() {
     var userEmail = document.getElementById("email_field").value;
@@ -100,33 +105,5 @@ function login() {
 
 function logout() {
     firebase.auth().signOut();
-}
-
-function getSelected() {
-    var selected = [];
-    $('.switch input:checked').each(function() {
-        var selectedId = $(this).attr('id').substr(6);
-        
-        selected.push({
-            [selectedId]: {
-                "lat": $('#lat_' + selectedId).val(),
-                "lon": $('#lon_' + selectedId).val()
-            }
-        });
-
-    });
-    return selected;
-}
-
-function getGameId() {
-    var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZ";
-    var string_length = 4;
-    var randomstring = '';
-    for (var i = 0; i < string_length; i++) {
-        var rnum = Math.floor(Math.random() * chars.length);
-        randomstring += chars.substring(rnum, rnum + 1);
-    }
-
-    return randomstring;
 }
 
