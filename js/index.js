@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyDKtbbK0x-MUqXupFZkDBbFxzPlU9ArBNQ",
@@ -10,26 +11,6 @@ var config = {
 };
 firebase.initializeApp(config);
 
-
-
-var     html = '<div class="py-5 user_div">'
-        html += '<div class="container">'
-        html += '<div class="row hidden-md-up">'
-        html += '<div class="col-md-4">'
-        html += '<div class="card">'
-        html += '<div class="card-block">'
-        html += '<h4 class="card-title"></h4>'
-        html += '<p class="card-text p-y-1"> </p>'
-
-        html += '<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">'
-        html += '<label class="form-check-label" for="defaultCheck1"> </label>'
-        html += '</div>'
-        html += '</div>'
-        html += '</div>'
-        html += '</div>'
-        html += '</div>'
-        html += '</div>'
-
 var minigameCards = "";
 
 var firestore = firebase.firestore();
@@ -39,20 +20,16 @@ firestore.collection("minigames").get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
         // doc.data() is never undefined for query doc snapshots
         console.log(doc.id, " => ", doc.data());
-        
-            minigameCards += '<div class="col-md-4">'
-            + '<div class="card">'
-            + '<div class="card-block">'
-            + '<h4 class="card-title">'+doc.data().name+'</h4>'
-            + '<p class="card-text p-y-1">'+doc.data().description+'</p>'
-            + '<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">'
-            + '<label class="form-check-label" for="defaultCheck1"> </label>'
-            + '</div>'
-            + '</div>'
-            + '</div>'
-
-        // $(".card-title").append(doc.data().name);
-
+        minigameCards += '<div class="col-md-4">'
+        + '<div class="card">'
+        + '<div class="card-block">'
+        + '<h4 class="card-title">'+doc.data().name+'</h4>'
+        + '<p class="card-text p-y-1">'+doc.data().description+'</p>'
+        + '<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">'
+        + '<label class="form-check-label" for="defaultCheck1"> </label>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
     });
     $('#minigame-card').html(minigameCards);
 });
@@ -138,6 +115,7 @@ function randomString() {
     }
     document.randform.randomfield.value = randomstring;
 }
+
 });
 
 
